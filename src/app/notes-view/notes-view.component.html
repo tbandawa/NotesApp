@@ -1,0 +1,20 @@
+<div class="container-flex" *ngIf="note">
+    <div class="row">
+        <div class="col">
+            {{ note.title }}
+        </div>
+        <div class="col text-right">
+            {{ note.createdAt }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ note.content }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-right">
+            {{ note.updatedAt }}
+        </div>
+    </div>
+</div>

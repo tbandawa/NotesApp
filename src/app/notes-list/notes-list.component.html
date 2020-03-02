@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <table class="table table-borderless">
+                <tbody>
+                    <tr *ngFor="let note of notes">
+                        <td class="row">
+                            <div class="col">
+                                <div class="row note-date">
+                                    {{ note.createdAt }}
+                                </div>
+                                <div class="row note-title">
+                                    {{ note.title }}
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-secondary" (click)="showNote(note)">View</button>
+                                    <button type="button" class="btn btn-secondary" (click)="editNote(note)">Edit</button>
+                                    <button type="button" class="btn btn-secondary" (click)="deleteNote(note.id)">Delete</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-9">
+            <app-notes-view [note]=note></app-notes-view>
+        </div>
+    </div>
+</div>

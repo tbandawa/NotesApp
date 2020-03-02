@@ -1,0 +1,16 @@
+.box {
+  border-radius: 0.0rem;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(201, 201, 201);
+}
+
+.note-date {
+    font-weight: lighter;
+    color:rgb(211, 211, 211);
+    font-size: small;
+}
+
+.note-title {
+    font-weight: bold;
+    font-size: medium;
+}
