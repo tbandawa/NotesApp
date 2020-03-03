@@ -19,7 +19,10 @@ export class NotesCreateComponent implements OnInit {
 
   onCreate(formData) {
     this.apiService.addNote(formData.title, formData.body).subscribe({
-      next: data => console.log(data),
+      next: data => {
+        console.log(data);
+        this.router.navigate([""]);
+      },
       error: error => {
         console.log(error.message);
       }

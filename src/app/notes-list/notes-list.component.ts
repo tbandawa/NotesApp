@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router'
 import { Note } from '../model/note';
 
 @Component({
@@ -32,12 +32,8 @@ export class NotesListComponent implements OnInit {
     this.note = noteShow;
   }
 
-  editNote(noteEdit: Note){
-    this.router.navigate(['notes/edit'], {state: {data: {noteEdit}}})
-  }
-
-  deleteNote(deleteId){
-    this.router.navigate(['notes/delete'], {state: {data: {deleteId}}})
+  createNote() {
+    this.router.navigate(['notes/create']);
   }
 
 }

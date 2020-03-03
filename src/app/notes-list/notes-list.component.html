@@ -1,29 +1,27 @@
-<div class="container-fluid">
+<div class="container" style="background-color: white;">
     <div class="row">
-        <div class="col-3">
-            <table class="table table-borderless">
-                <tbody>
-                    <tr *ngFor="let note of notes">
-                        <td class="row">
-                            <div class="col">
-                                <div class="row note-date">
-                                    {{ note.createdAt }}
-                                </div>
-                                <div class="row note-title">
-                                    {{ note.title }}
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-secondary" (click)="showNote(note)">View</button>
-                                    <button type="button" class="btn btn-secondary" (click)="editNote(note)">Edit</button>
-                                    <button type="button" class="btn btn-secondary" (click)="deleteNote(note.id)">Delete</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col-3" style="margin-bottom: 10px; margin-top: 10px; position: relative; top: 0;">
+            <div class="row" style="display: flex; padding-bottom: 25px;">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th class="col note-header">MY NOTES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let note of notes">
+                            <td class="col note-title" (click)="showNote(note)">
+                                {{ note.title }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row" style="position: absolute; width: 100%; bottom: 0;">
+                <div class="col">
+                    <button type="button" class="btn button-new" (click)="createNote()"><i class="fa fa-plus" style="margin-right: 5px;"></i>New</button>
+                </div>
+            </div>
         </div>
         <div class="col-9">
             <app-notes-view [note]=note></app-notes-view>

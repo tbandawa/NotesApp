@@ -24,15 +24,18 @@ export class NotesEditComponent implements OnInit {
 
   onEdit(formData) {
     this.apiService.editNote(this.note.id, formData.title, formData.body).subscribe({
-      next: data => console.log(data),
+      next: data => {
+        console.log(data);
+        this.router.navigate([""]);
+      },
       error: error => {
         console.log(error.message);
       }
     });
   }
 
-  cancelClick() {
-    this.router.navigate(['']);
+  cancelClick(noteHistory: Note) {
+    this.router.navigate([''], {state: {data: {noteHistory}}});
   }
 
 }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DatePipe } from '@angular/common';
 import { NotesListComponent } from './notes-list/notes-list.component';
 import { NotesViewComponent } from './notes-view/notes-view.component';
 import { NotesEditComponent } from './notes-edit/notes-edit.component';
@@ -25,7 +26,7 @@ import { NotesDeleteComponent } from './notes-delete/notes-delete.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   exports: [NotesListComponent, NotesViewComponent, NotesEditComponent, NotesCreateComponent, NotesDeleteComponent]
 })
