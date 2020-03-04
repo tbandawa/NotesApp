@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
-import { Note } from '../model/note';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { ApiService } from '../api.service'
+import { Note } from '../model/note'
 
 @Component({
   selector: 'app-notes-create',
@@ -10,8 +10,8 @@ import { Note } from '../model/note';
 })
 export class NotesCreateComponent implements OnInit {
 
-  note: Note;
-  value: String;
+  note: Note
+  value: String
 
   constructor(private router: Router, private apiService: ApiService) { }
 
@@ -20,13 +20,13 @@ export class NotesCreateComponent implements OnInit {
   onCreate(formData) {
     this.apiService.addNote(formData.title, formData.body).subscribe({
       next: data => {
-        console.log(data);
-        this.router.navigate([""]);
+        console.log(data)
+        this.router.navigate([""])
       },
       error: error => {
-        console.log(error.message);
+        console.log(error.message)
       }
-    });
+    })
   }
 
   cancelClick() {

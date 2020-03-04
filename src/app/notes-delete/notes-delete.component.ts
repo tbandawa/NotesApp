@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { ApiService } from '../api.service';
+import { ApiService } from '../api.service'
+import { Note, ViewNote } from '../model/note'
 
 @Component({
   selector: 'app-notes-delete',
@@ -9,26 +10,27 @@ import { ApiService } from '../api.service';
 })
 export class NotesDeleteComponent implements OnInit {
 
-  noteId: number;
+  noteDelete: Note
 
-  constructor(private router: Router, private apiService: ApiService) { }
+  constructor(private router: Router, private apiService: ApiService, private viewNote: ViewNote) { }
 
   ngOnInit() {
-    this.noteId = history.state.data.deleteId;
+    this.noteDelete = history.state.data.noteDelete
   }
 
   deleteClick() {
-    this.apiService.deleteNote(this.noteId).subscribe({
+    this.apiService.deleteNote(this.noteDelete.id).subscribe({
       next: resp => { 
-        console.log(resp);
-        this.router.navigate(['']);
+        console.log(resp)
+        this.viewNote.setNewNote(null)
+        this.router.navigate([''])
       },
       error: err => console.log(err.message)
     })
   }
 
   cancelClick() {
-    this.router.navigate([""]);
+    this.router.navigate([""])
   }
 
 }

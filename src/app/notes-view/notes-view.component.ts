@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core'
 import { Router } from '@angular/router'
-import { Note } from '../model/note';
+import { Note, ViewNote } from '../model/note'
 
 @Component({
   selector: 'app-notes-view',
@@ -9,24 +9,30 @@ import { Note } from '../model/note';
 })
 export class NotesViewComponent implements OnInit {
 
-  @Input() note: Note;
+  note: Note
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private viewNote: ViewNote) {
 
-  ngOnInit() {
-    if(history.state.data.noteHistory){
-      console.log("last note", history.state.data.noteHistory);
-    } else {
-      console.log("history is empty");
+    this.viewNote.getNewNote().subscribe(
+      note => {
+        this.note = note
+      }
+    )
+
+    if(this.viewNote.getCurrentNote() != null) {
+      this.note = this.viewNote.getCurrentNote()
     }
+    
   }
+
+  ngOnInit() {}
 
   editNote(noteEdit: Note){
     this.router.navigate(['notes/edit'], {state: {data: {noteEdit}}})
   }
 
-  deleteNote(deleteId){
-    this.router.navigate(['notes/delete'], {state: {data: {deleteId}}})
+  deleteNote(noteDelete){
+    this.router.navigate(['notes/delete'], {state: {data: {noteDelete}}})
   }
 
 }

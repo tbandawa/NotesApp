@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router'
-import { Note } from '../model/note';
+import { Note, ViewNote } from '../model/note';
 
 @Component({
   selector: 'app-notes-list',
@@ -11,29 +11,34 @@ import { Note } from '../model/note';
 
 export class NotesListComponent implements OnInit {
 
-  note: Note;
-  notes: Note[];
+  notes: Note[]
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, private viewNote: ViewNote) { }
 
   ngOnInit() {
     this.apiService.getNotes().subscribe({
       next: data => {
-        this.notes = data;
-        this.note = data[0];
+        this.notes = data
+        if(this.viewNote.getCurrentNote() == null) {
+          this.viewNote.setNewNote(data[0])
+        }
       },
       error: error => {
-        console.log(error.message);
+        console.log(error.message)
       }
-    });
+    })
+  }
+
+  ngOnDestroy() {
+
   }
 
   showNote(noteShow: Note){
-    this.note = noteShow;
+    this.viewNote.setNewNote(noteShow)
   }
 
   createNote() {
-    this.router.navigate(['notes/create']);
+    this.router.navigate(['notes/create'])
   }
 
 }

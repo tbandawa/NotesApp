@@ -1,8 +1,11 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <button type="button" class="btn btn-primary" (click)="deleteClick()">Delete</button>
-            <button type="submit" class="btn btn-light spacer" (click)="cancelClick()">Cancel</button>
+<div class="container-fluid">
+    <div class="col" style="margin: 10px;">
+        <div class="row d-flex justify-content-center note-delete">
+            Are you sure you want to delete this note {{ noteDelete.title }}?
+        </div>
+        <div class="row d-flex justify-content-center">
+            <button type="button" class="btn button-cancel float-left" (click)="cancelClick()"><i class="fa fa-times" style="margin-right: 5px;"></i>Cancel</button>
+            <button type="submit" class="btn button-delete float-left" (click)="deleteClick()"><i class="fa fa-trash" style="margin-right: 5px;"></i>Delete</button>
         </div>
     </div>
 </div>
