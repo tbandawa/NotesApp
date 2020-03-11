@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ApiService } from '../api.service';
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { ApiService } from '../api.service'
 import { Router } from '@angular/router'
-import { Note, ViewNote } from '../model/note';
+import { Note, ViewNote } from '../model/note'
+import { Errors } from '../model/errors'
 
 @Component({
   selector: 'app-notes-list',
@@ -13,9 +14,10 @@ export class NotesListComponent implements OnInit {
 
   notes: Note[]
 
-  constructor(private apiService: ApiService, private router: Router, private viewNote: ViewNote) { }
+  constructor(private apiService: ApiService, private router: Router, private viewNote: ViewNote, private errors: Errors) { }
 
   ngOnInit() {
+    this.errors.setError(null)
     this.apiService.getNotes().subscribe({
       next: data => {
         this.notes = data
@@ -24,7 +26,7 @@ export class NotesListComponent implements OnInit {
         }
       },
       error: error => {
-        console.log(error.message)
+        this.errors.setError(error.message)
       }
     })
   }
