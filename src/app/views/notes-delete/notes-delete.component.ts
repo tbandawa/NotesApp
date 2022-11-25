@@ -23,7 +23,6 @@ export class NotesDeleteComponent implements OnInit {
     this.apiService.deleteNote(this.noteDelete.id).subscribe({
       next: resp => {
         console.log(resp)
-        //this.viewNote.setNewNote(null)
         this.router.navigate([''])
       },
       error: error => {
