@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col" style="margin-bottom: 10px; margin-top: 10px; position: relative; top: 0;" *ngIf="note">
+        <div class="row" style="display: flex;">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th class="col note-date">{{ note.createdAt | date}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col note-title">
+                            {{ note.title }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col note-content">
+                            {{ note.content }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row" style="position: absolute; width: 100%; bottom: 0;">
+            <div class="col">
+                <button type="button" class="btn button-edit float-right" (click)="editNote(note)"><i class="fa fa-edit" style="margin-right: 5px;"></i>Edit</button>
+                <button type="button" class="btn button-delete float-right" (click)="deleteNote(note)"><i class="fa fa-trash" style="margin-right: 5px;"></i>Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

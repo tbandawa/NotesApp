@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { Errors } from './models/errors'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'NotesApp';
+
+  title = 'NotesApp'
+  error!: String | null
+
+  constructor(
+    private errors: Errors
+  ) {
+    this.errors.getError().subscribe(
+      error => {
+        this.error = error
+      }
+    )
+  }
+
+  closeClick() {
+        this.errors.resetError()
+  }
 }

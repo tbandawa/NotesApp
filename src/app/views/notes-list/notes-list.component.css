@@ -1,0 +1,37 @@
+.note-header {
+    font-weight: lighter;
+    color:rgb(153, 153, 153);
+    font-size: small;
+  }
+
+  .note-title {
+    font-weight: bold;
+    font-size: medium;
+  }
+
+  .active-note {
+    background-color: rgba(113, 172, 233, 0.75);
+    font-weight: bold;
+    font-size: medium;
+  }
+
+  .note-title:hover {
+    background-color: rgba(113, 172, 233, 0.75);
+    cursor: pointer;
+  }
+
+  .button-new {
+    color: rgba(113, 172, 233, 0.75);
+    letter-spacing: 1px;
+    line-height: 15px;
+    border: 1px solid rgba(113, 172, 233, 0.75);
+    border-radius: 40px;
+    background: transparent;
+    margin: 5px;
+  }
+
+  .button-new:hover {
+    color: #FFFFFF;
+    background: rgba(113, 172, 233, 0.75);
+    border: 1px solid rgba(113, 172, 233, 0.75);
+  }

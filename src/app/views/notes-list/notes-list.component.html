@@ -1,0 +1,37 @@
+<div class="container" style="background-color: white;">
+    <div class="row">
+        <div class="col-3" style="margin-bottom: 10px; margin-top: 10px; position: relative; top: 0;">
+            <div class="row" style="display: flex; padding-bottom: 25px;">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th class="col note-header">MY NOTES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let note of notes">
+                          <div *ngIf="activeNote.id == note.id">
+                            <td class="col active-note" (click)="showNote(note)">
+                              {{ note.title }}
+                            </td>
+                          </div>
+                          <div *ngIf="activeNote.id != note.id">
+                            <td class="col note-title" (click)="showNote(note)">
+                              {{ note.title }}
+                            </td>
+                          </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row" style="position: absolute; width: 100%; bottom: 0;">
+                <div class="col">
+                    <button type="button" class="btn button-new" (click)="createNote()"><i class="fa fa-plus" style="margin-right: 5px;"></i>New</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <app-notes-view></app-notes-view>
+        </div>
+    </div>
+</div>

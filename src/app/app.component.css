@@ -1,0 +1,20 @@
+.box {
+    border-radius: 0.3rem;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(201, 201, 201);
+}
+
+.button-close {
+  color: rgba(113, 172, 233, 0.75);
+  line-height: 10px;
+  border: 1px solid rgba(113, 172, 233, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  margin-right: 10px;
+}
+
+.button-close:hover {
+  color: #FFFFFF;
+  background: rgba(113, 172, 233, 0.75);
+  border: 1px solid rgba(113, 172, 233, 0.75);
+}

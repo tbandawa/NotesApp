@@ -1,0 +1,39 @@
+<div class="container" style="background-color: white;">
+    <div class="row">
+        <div class="col" style="margin-bottom: 10px; margin-top: 10px; position: relative; top: 0;">
+            <div class="row" style="display: flex;">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th class="col note-header">CREATE NOTE</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="col">
+                    <form [formGroup]="createForm" (ngSubmit)="onCreate()">
+                        <div class="form-group">
+                            <label for="inputTitle">Note Title</label>
+                            <input id="inputTitle" type="text" [formControl]="title" class="form-control" required>
+                            <div [hidden]="title.valid || title.untouched">
+                              <div [hidden]="!title.hasError('required')" class="form-error">Note title required.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputBody">Note Content</label>
+                            <textarea id="inputBody" type="text" [formControl]="body" class="form-control span6" rows="10"></textarea>
+                            <div [hidden]="body.valid || title.untouched">
+                              <div [hidden]="!body.hasError('required')" class="form-error">Note body required.</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn button-cancel float-left" (click)="cancelClick()"><i class="fa fa-times" style="margin-right: 5px;"></i>Cancel</button>
+                                <button type="submit" class="btn button-create float-left" [disabled]="!createForm.valid"><i class="fa fa-plus" style="margin-right: 5px;"></i>Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

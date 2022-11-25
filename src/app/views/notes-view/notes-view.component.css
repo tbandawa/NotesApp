@@ -1,0 +1,47 @@
+.note-date {
+    font-weight: lighter;
+    color:rgb(153, 153, 153);
+    font-size: small;
+}
+
+.note-title {
+    font-weight: bold;
+    font-size: large;
+}
+
+.note-content {
+    color:rgb(153, 153, 153);
+    padding-bottom: 25px;
+}
+
+.button-edit {
+    color: rgba(113, 172, 233, 0.75);
+    letter-spacing: 1px;
+    line-height: 15px;
+    border: 1px solid rgba(113, 172, 233, 0.75);
+    border-radius: 40px;
+    background: transparent;
+    margin: 5px;
+}
+  
+.button-edit:hover {
+    color: #FFFFFF;
+    background: rgba(113, 172, 233, 0.75);
+    border: 1px solid rgba(113, 172, 233, 0.75);
+}
+
+.button-delete {
+    color: rgba(113, 172, 233, 0.75);
+    letter-spacing: 1px;
+    line-height: 15px;
+    border: 1px solid rgba(113, 172, 233, 0.75);
+    border-radius: 40px;
+    background: transparent;
+    margin: 5px;
+}
+  
+.button-delete:hover {
+    color: #FFFFFF;
+    background: rgba(113, 172, 233, 0.75);
+    border: 1px solid rgba(113, 172, 233, 0.75);
+}
