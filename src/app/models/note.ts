@@ -3,13 +3,20 @@ import { Adapter } from "./adapter";
 import { Subject, Observable } from 'rxjs';
 
 export class Note {
-
     constructor(
         public id: number,
         public title: string,
         public content: string,
         public createdAt: Date,
         public updatedAt: Date){}
+}
+
+export class ErrorResponse {
+  constructor(
+    public statusCode: number,
+    public message: string,
+    public details: string[],
+    public timeStamp: Date){}
 }
 
 @Injectable({

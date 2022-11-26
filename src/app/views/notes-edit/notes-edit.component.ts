@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms'
 import { Router } from '@angular/router'
 import { ApiService } from 'src/app/api/api.service'
 import { Errors } from 'src/app/models/errors'
-import { Note } from 'src/app/models/note'
+import {ErrorResponse, Note} from 'src/app/models/note'
 
 @Component({
   selector: 'app-notes-edit',
@@ -15,6 +15,7 @@ export class NotesEditComponent implements OnInit {
   note!: Note
   noteTitle!: string
   noteBody!: string
+  errorResponse!: ErrorResponse
 
   title = new FormControl('', [Validators.required])
   body = new FormControl('', [Validators.required])
@@ -45,7 +46,8 @@ export class NotesEditComponent implements OnInit {
         this.router.navigate([""])
       },
       error: error => {
-        this.errors.setError(error.message)
+        this.errorResponse = error.error
+        this.errors.setError(this.errorResponse.message)
       }
     })
   }

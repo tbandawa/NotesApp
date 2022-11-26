@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { ApiService } from 'src/app/api/api.service'
 import { Errors } from 'src/app/models/errors'
-import { Note } from 'src/app/models/note'
+import { ErrorResponse, Note } from 'src/app/models/note'
 
 @Component({
   selector: 'app-notes-delete',
@@ -12,6 +12,7 @@ import { Note } from 'src/app/models/note'
 export class NotesDeleteComponent implements OnInit {
 
   noteDelete!: Note
+  errorResponse!: ErrorResponse
 
   constructor(private router: Router, private apiService: ApiService, private errors: Errors) { }
 
@@ -26,7 +27,8 @@ export class NotesDeleteComponent implements OnInit {
         this.router.navigate([''])
       },
       error: error => {
-        this.errors.setError(error.message)
+        this.errorResponse = error.error
+        this.errors.setError(this.errorResponse.message)
       }
     })
   }

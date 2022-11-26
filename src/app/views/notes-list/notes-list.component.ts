@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { ApiService } from 'src/app/api/api.service'
 import { Errors } from 'src/app/models/errors'
-import { Note, CurrentNote } from 'src/app/models/note'
+import {Note, CurrentNote, ErrorResponse} from 'src/app/models/note'
 
 @Component({
   selector: 'app-notes-list',
@@ -13,6 +13,7 @@ export class NotesListComponent  implements OnInit {
 
   notes!: Note[] | null
   activeNote!: Note
+  errorResponse!: ErrorResponse
 
   constructor(
     private apiService: ApiService,
@@ -34,7 +35,8 @@ export class NotesListComponent  implements OnInit {
         this.currentNote.setNote(data[0])
       },
       error: error => {
-        this.errors.setError(error.message)
+        this.errorResponse = error.error
+        this.errors.setError(this.errorResponse.message)
       }
     })
   }
