@@ -13,7 +13,6 @@ import {ErrorResponse, Note} from 'src/app/models/note'
 export class NotesCreateComponent {
 
   note!: Note
-  value!: String
   errorResponse!: ErrorResponse
 
   title = new FormControl('', [Validators.required])
